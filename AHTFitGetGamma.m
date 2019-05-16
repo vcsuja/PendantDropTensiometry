@@ -1,4 +1,4 @@
-   function ST = AHTFitGetGamma(S,D,DeltaRho)
+   function ST = AHTFitGetGamma(S,D,DeltaRho,g)
         %Params:  D - The equitorial diameter of the drop
         %         S - Ratio of diameter at distance D from the apex of the
         %         drop to D
@@ -11,6 +11,11 @@
         %        (ii) J.M Andreas et.al Boundary tension by Pendant drops
         
         % Author: Vinny (vineethcs.cet@gmail.com)
+        
+        %Handle optional arguments:
+        if nargin<4
+            g = 9.8;
+        end
         
         
         
@@ -32,5 +37,5 @@
             %Use formula for S = 0.3 to S = 0.4
             Hinv = (.34074/S^2.52303) + (123.9495*S^5)  - (72.82991*S^4) + (0.01320*S^3) - (3.38210*S^2) + (5.52969*S) - 1.07260;
         end
-    ST = (DeltaRho*9.8*(D)^2)*(Hinv);
+    ST = (DeltaRho*g*(D)^2)*(Hinv);
     end
