@@ -9,7 +9,8 @@
         %          Dropcontour - 2D array with drop boundary points
         %          excluding the capillary scaled to physical units
         %          scale - scale factor for Pixel to meters conversion 
-        % Author: Vinny (vineethcs.cet@gmail.com)
+        % Author: Vinny (vineethcs.cet@gmail.com) (Based on orginal code by
+        % J. Frostad (john.frostad@ubc.ca))
         
         % Check validity of inputs
         if (~isnumeric(needleD))
