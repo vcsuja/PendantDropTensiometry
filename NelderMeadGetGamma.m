@@ -118,6 +118,8 @@ function [ST,predContours] = NelderMeadGetGamma(DropContour,DeltaRho,g,MaxReload
             Search = round(.06*2*N); % # of nearby points to check for closest theoretical point
             CloseIndex = E; %Index of closest points on theoretical curve
             
+            RangeAug = -Search:Search; %Precompute search range
+            
             for i = 1:N
                 %Search for closest point to data on theoretical boundary.
                 %Search entire curve on first point.
@@ -130,19 +132,18 @@ function [ST,predContours] = NelderMeadGetGamma(DropContour,DeltaRho,g,MaxReload
                 elseif Index >= length(xTheory)-Search
                     Range = Index-Search:length(xTheory);
                 else
-                    Range = Index-Search:Index+Search;
+                    Range = Index+RangeAug;
                 end
                 
                 %Calculate RMS distance and store closest distance and index of point
-                Distance = sqrt((xTheory(Range) - xProcessed(i)).^2 + ...
-                    (yTheory(Range) - yProcessed(i)).^2);
+                Distance = (xTheory(Range) - xProcessed(i)).^2 + (yTheory(Range) - yProcessed(i)).^2;
                 [E(i),TempIndex] = min(Distance);
                 Index = Range(1)-1+TempIndex;
                 CloseIndex(i) = Index;
             end
 
             %Sum all of the RMS distances as the total error
-            Error = sum(E);
+            Error = sum((E));
             end
                          
             
