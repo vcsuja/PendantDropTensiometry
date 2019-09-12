@@ -168,7 +168,7 @@ classdef GeneratePendantDrop < handle
         fr = getframe(gca,[0,0,nsize,nsize]);
         close(gcf);
         im = frame2im(fr);
-        im = im2double(im(round(end-nsize)/2:round(end-nsize)/2+nsize-1,round(end-nsize)/2:round(end-nsize)/2+nsize-1,2));           
+        im = im2double(:,:,2));           
         
         %%%%Depracted due to an unresolved error%%
         %im = im2double(im(round(end-nsize)/2:round(end-nsize)/2+nsize-1,round(end-nsize)/2:round(end-nsize)/2+nsize-1,2));       
