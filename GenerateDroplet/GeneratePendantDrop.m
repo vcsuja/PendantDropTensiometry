@@ -162,13 +162,13 @@ classdef GeneratePendantDrop < handle
         plot(xProfile+xtrans,yProfile+ytrans,'Linewidth',1.4,'Color',[0,0,1]);
         
         %Axis controls:
-        axis equal          
-        set(gca, 'Units', 'pixels', 'Position', [10, 10, nsize, nsize]);
-        
+        axis equal
+        set(gca, 'Units', 'pixels');
+        set(gca,'Position', [10, 10, nsize, nsize],'XColor', 'none', 'YColor', 'none');
         fr = getframe(gca,[0,0,nsize,nsize]);
         close(gcf);
         im = frame2im(fr);
-        im = im2double(:,:,2));           
+        im = im2double(im(:,:,2));           
         
         %%%%Depracted due to an unresolved error%%
         %im = im2double(im(round(end-nsize)/2:round(end-nsize)/2+nsize-1,round(end-nsize)/2:round(end-nsize)/2+nsize-1,2));       
